@@ -19,15 +19,15 @@ class BottomBar extends StatelessWidget {
               onPressed: () {},
             ),
             IconButton(
-              icon: Icon(Icons.add_circle_outline_rounded),
+              icon: Icon(Icons.shop_outlined),
               onPressed: () {},
             ),
             IconButton(
-              icon: Icon(Icons.favorite_border_outlined),
+              icon: Icon(Icons.shopping_bag_outlined),
               onPressed: () {},
             ),
             IconButton(
-              icon: Icon(Icons.person),
+              icon: Icon(Icons.account_circle),
               color: Colors.black,
               onPressed: () {},
             ),

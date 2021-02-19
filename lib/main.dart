@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import './components/BottomBar.dart';
 import './components/LateralBar.dart';
+import './components/Post.dart';
 
-void main() => runApp(LoginPage());
+void main() => runApp(InstagramClone());
 
-class LoginPage extends StatelessWidget {
+class InstagramClone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,6 +16,17 @@ class LoginPage extends StatelessWidget {
   }
 }
 
+final List users = [
+  {'photo': 'ismael', 'user': 'ismaelpdro'},
+  {'photo': 'yasmin', 'user': 'yasmind_p'},
+  {'photo': 'marcello', 'user': 'marcello_eliias'},
+  {'photo': 'madelon', 'user': 'mmadelon_'},
+  {'photo': 'random', 'user': 'joao_antonio'},
+  {'photo': 'katara', 'user': 'katara_water'},
+  {'photo': 'dory', 'user': 'dory'},
+  {'photo': 'yes', 'user': 'yes'},
+];
+
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -23,37 +35,41 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(250, 250, 250, 1),
         elevation: 0,
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.camera_alt_outlined),
-          color: Colors.black,
-          onPressed: () {},
-        ),
         title: SvgPicture.asset(
           'assets/images/Instagram_logo.svg',
           height: 50,
         ),
         actions: [
-          Transform.rotate(
-            angle: 5.6,
-            child: IconButton(
-              icon: Icon(Icons.send_outlined),
-              color: Colors.black,
-              onPressed: () {},
-            ),
+          IconButton(
+            icon: Icon(Icons.add_circle_outline_rounded),
+            color: Colors.black,
+            onPressed: () {},
           ),
-          SizedBox(width: 10),
+          IconButton(
+            color: Colors.black,
+            icon: Icon(Icons.favorite_outline_rounded),
+            onPressed: () {},
+          ),
+          IconButton(
+            color: Colors.black,
+            icon: Icon(Icons.send_outlined),
+            onPressed: () {},
+          ),
         ],
       ),
-      body: Column(
-        children: [
-          Column(
-            children: [
-              LateralBar(),
-              Divider(),
-            ],
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            LateralBar(),
+            Divider(),
+            ...users.map((user) {
+              return Post(
+                photo: user['photo'],
+                user: user['user'],
+              );
+            }).toList(),
+          ],
+        ),
       ),
     );
   }

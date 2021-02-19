@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CircularAvatar extends StatelessWidget {
+class ImageRounded extends StatelessWidget {
   final String user;
   final String photo;
 
-  CircularAvatar({
+  ImageRounded({
     this.photo,
     this.user,
   });
@@ -16,13 +16,12 @@ class CircularAvatar extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
-            radius: 47,
+            radius: 45,
             child: CircleAvatar(
               radius: 43,
               backgroundImage: AssetImage('assets/images/$photo.jpeg'),
             ),
           ),
-          SizedBox(height: 5),
           Text('$user'),
         ],
       ),

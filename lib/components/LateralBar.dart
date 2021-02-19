@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'CircularAvatar.dart';
+import 'ImageRounded.dart';
 
 class LateralBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final users = [
+    final List users = [
       {'photo': 'ismael', 'user': 'ismaelpdro'},
       {'photo': 'yasmin', 'user': 'yasmind_p'},
       {'photo': 'marcello', 'user': 'marcello_eliias'},
@@ -14,19 +14,16 @@ class LateralBar extends StatelessWidget {
       {'photo': 'dory', 'user': 'dory'},
       {'photo': 'yes', 'user': 'yes'},
     ];
-    final cloneUsers = []..addAll(users);
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: Container(
-        child: Row(
-          children: cloneUsers.map((user) {
-            return CircularAvatar(
-              photo: user['photo'],
-              user: user['user'],
-            );
-          }).toList(),
-        ),
+      child: Row(
+        children: users
+            .map((user) => ImageRounded(
+                  photo: user['photo'],
+                  user: user['user'],
+                ))
+            .toList(),
       ),
     );
   }
