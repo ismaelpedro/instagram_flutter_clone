@@ -15,7 +15,7 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,9 +57,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
 }
