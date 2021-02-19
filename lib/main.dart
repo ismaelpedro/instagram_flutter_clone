@@ -1,76 +1,110 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import './components/BottomBar.dart';
-import './components/LateralBar.dart';
-import './components/Post.dart';
+import 'components/BottomBar.dart';
+import 'components/LateralBar.dart';
+import 'components/Post.dart';
 
-void main() => runApp(InstagramClone());
+void main() => runApp(InstagramPage());
 
-class InstagramClone extends StatelessWidget {
+class InstagramPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: HomePage(),
     );
   }
 }
 
-final List users = [
+final List accounts = [
   {'photo': 'ismael', 'user': 'ismaelpdro'},
   {'photo': 'yasmin', 'user': 'yasmind_p'},
   {'photo': 'marcello', 'user': 'marcello_eliias'},
   {'photo': 'madelon', 'user': 'mmadelon_'},
   {'photo': 'random', 'user': 'joao_antonio'},
   {'photo': 'katara', 'user': 'katara_water'},
-  {'photo': 'dory', 'user': 'dory'},
-  {'photo': 'yes', 'user': 'yes'},
+  {'photo': 'bolsonaro', 'user': 'taokey'},
+  {'photo': 'lula', 'user': 'companheiro'},
+  {'photo': 'dory', 'user': 'dory_fish'},
+  {'photo': 'yes', 'user': 'yes_sr'},
 ];
 
-class MyHomePage extends StatelessWidget {
+final List<Icon> iconsAppBar = [
+  Icon(Icons.add_circle_outline_rounded),
+  Icon(Icons.favorite_outline_rounded),
+  Icon(Icons.send_outlined),
+];
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
-      bottomNavigationBar: BottomBar(),
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(250, 250, 250, 1),
+        backgroundColor: Color.fromRGBO(250, 250, 250, 0),
         elevation: 0,
         title: SvgPicture.asset(
           'assets/images/Instagram_logo.svg',
-          height: 50,
+          height: 50 * MediaQuery.of(context).textScaleFactor,
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.add_circle_outline_rounded),
-            color: Colors.black,
-            onPressed: () {},
-          ),
-          IconButton(
-            color: Colors.black,
-            icon: Icon(Icons.favorite_outline_rounded),
-            onPressed: () {},
-          ),
-          IconButton(
-            color: Colors.black,
-            icon: Icon(Icons.send_outlined),
-            onPressed: () {},
-          ),
-        ],
+        actions: iconsAppBar
+            .map(
+              (icone) => IconButton(
+                color: Colors.black,
+                icon: icone,
+                onPressed: () {},
+                iconSize: 28,
+              ),
+            )
+            .toList(),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            LateralBar(),
-            Divider(),
-            ...users.map((user) {
-              return Post(
-                photo: user['photo'],
-                user: user['user'],
-              );
-            }).toList(),
-          ],
+      body: Container(
+        width: double.infinity,
+        height: size.height * 1,
+        child: LayoutBuilder(
+          builder: (_, constrainsts) {
+            return Column(
+              children: [
+                Container(
+                  height: constrainsts.maxHeight * .18,
+                  child: LateralBar(
+                    listOfPhotosAndUsers: accounts,
+                  ),
+                ),
+                Divider(height: 0),
+                Container(
+                  height: constrainsts.maxHeight * .82,
+                  width: double.infinity,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: accounts
+                          .map(
+                            (account) => Post(
+                              photo: account['photo'],
+                              user: account['user'],
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
+      bottomNavigationBar: BottomBar(),
     );
   }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
 }

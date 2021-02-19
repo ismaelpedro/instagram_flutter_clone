@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ImageRounded extends StatelessWidget {
+class Avatar extends StatelessWidget {
   final String user;
   final String photo;
 
-  ImageRounded({
-    this.photo,
-    this.user,
+  Avatar({
+    @required this.photo,
+    @required this.user,
   });
 
   @override
@@ -16,11 +16,8 @@ class ImageRounded extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
-            radius: 45,
-            child: CircleAvatar(
-              radius: 43,
-              backgroundImage: AssetImage('assets/images/$photo.jpeg'),
-            ),
+            radius: 43,
+            backgroundImage: AssetImage('assets/images/$photo.jpeg'),
           ),
           Text('$user'),
         ],

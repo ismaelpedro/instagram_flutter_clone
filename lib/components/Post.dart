@@ -4,6 +4,15 @@ class Post extends StatelessWidget {
   final photo;
   final user;
 
+  final List<Icon> iconsPost = [
+    Icon(
+      Icons.favorite,
+      color: Colors.red,
+    ),
+    Icon(Icons.chat_bubble_outline_outlined),
+    Icon(Icons.send_outlined),
+  ];
+
   Post({
     this.photo,
     this.user,
@@ -11,53 +20,42 @@ class Post extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.height * 0.65,
-      child: Column(
-        children: [
-          ListTile(
-            leading: Icon(
-              Icons.account_circle,
-              color: Colors.black,
-            ),
-            title: Text('$user'),
-            trailing: Icon(Icons.menu),
+    return Column(
+      children: [
+        ListTile(
+          leading: Icon(
+            Icons.account_circle,
+            color: Colors.black,
           ),
-          Container(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.51,
-            decoration: BoxDecoration(
-              color: Colors.red,
-              image: DecorationImage(
-                image: AssetImage('assets/images/$photo.jpeg'),
-                fit: BoxFit.cover,
-              ),
-            ),
+          title: Text('$user'),
+          trailing: IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {},
+            color: Colors.black,
           ),
-          SizedBox(height: 4),
-          ListTile(
-            leading: Row(
-              children: [
-                Icon(
-                  Icons.favorite_border,
-                  color: Colors.black,
-                ),
-                SizedBox(width: 15),
-                Icon(
-                  Icons.chat_bubble_outline_outlined,
-                  color: Colors.black,
-                ),
-                SizedBox(width: 15),
-                Icon(
-                  Icons.send_outlined,
-                  color: Colors.black,
-                ),
-              ],
+        ),
+        Container(
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height * 0.45,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/$photo.jpeg'),
+              fit: BoxFit.cover,
             ),
           ),
-        ],
-      ),
+        ),
+        ListTile(
+          leading: Row(
+            children: iconsPost.map((icone) {
+              return IconButton(
+                icon: icone,
+                color: Colors.black,
+                onPressed: () {},
+              );
+            }).toList(),
+          ),
+        ),
+      ],
     );
   }
 }
