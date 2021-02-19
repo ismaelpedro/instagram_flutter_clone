@@ -16,8 +16,11 @@ class CircularAvatar extends StatelessWidget {
       child: Column(
         children: [
           CircleAvatar(
-            radius: 45,
-            backgroundImage: AssetImage('assets/images/$photo.jpeg'),
+            radius: 47,
+            child: CircleAvatar(
+              radius: 43,
+              backgroundImage: AssetImage('assets/images/$photo.jpeg'),
+            ),
           ),
           SizedBox(height: 5),
           Text('$user'),
