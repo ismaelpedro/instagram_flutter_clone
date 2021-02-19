@@ -1,206 +1,45 @@
 import 'package:flutter/material.dart';
+import 'CircularAvatar.dart';
 
 class LateralBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.14,
-      width: double.infinity,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Container(
         child: Row(
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/yasmin.jpeg'),
-                  ),
-                  Text('yasmind_p'),
-                ],
-              ),
+            CircularAvatar(
+              photo: 'ismael',
+              user: 'ismaelpdro',
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/euae.jpeg'),
-                  ),
-                  Text('ismaelpdro'),
-                ],
-              ),
+            CircularAvatar(
+              photo: 'yasmin',
+              user: 'yasmind_p',
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/marcello.jpeg'),
-                  ),
-                  Text('marcello_eliias'),
-                ],
-              ),
+            CircularAvatar(
+              photo: 'marcello',
+              user: 'marcello_eliias',
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/madelon.jpeg'),
-                  ),
-                  Text('mmadelon_'),
-                ],
-              ),
+            CircularAvatar(
+              photo: 'madelon',
+              user: 'mmadelon_',
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/yasmin.jpeg'),
-                  ),
-                  Text('yasmind_p'),
-                ],
-              ),
+            CircularAvatar(
+              photo: 'ismael',
+              user: 'ismaelpdro',
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/euae.jpeg'),
-                  ),
-                  Text('ismaelpdro'),
-                ],
-              ),
+            CircularAvatar(
+              photo: 'yasmin',
+              user: 'yasmind_p',
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/marcello.jpeg'),
-                  ),
-                  Text('marcello_eliias'),
-                ],
-              ),
+            CircularAvatar(
+              photo: 'marcello',
+              user: 'marcello_eliias',
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/madelon.jpeg'),
-                  ),
-                  Text('mmadelon_'),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/yasmin.jpeg'),
-                  ),
-                  Text('yasmind_p'),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/euae.jpeg'),
-                  ),
-                  Text('ismaelpdro'),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/marcello.jpeg'),
-                  ),
-                  Text('marcello_eliias'),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/madelon.jpeg'),
-                  ),
-                  Text('mmadelon_'),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/yasmin.jpeg'),
-                  ),
-                  Text('yasmind_p'),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/euae.jpeg'),
-                  ),
-                  Text('ismaelpdro'),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/marcello.jpeg'),
-                  ),
-                  Text('marcello_eliias'),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    backgroundImage: AssetImage('assets/images/madelon.jpeg'),
-                  ),
-                  Text('mmadelon_'),
-                ],
-              ),
+            CircularAvatar(
+              photo: 'madelon',
+              user: 'mmadelon_',
             ),
           ],
         ),
