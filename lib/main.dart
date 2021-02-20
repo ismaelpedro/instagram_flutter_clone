@@ -40,7 +40,7 @@ final List<Icon> iconsAppBar = [
   Icon(Icons.send_outlined),
 ];
 
-class _HomePageState extends State<HomePage> {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -64,47 +64,39 @@ class _HomePageState extends State<HomePage> {
             )
             .toList(),
       ),
-      body: Container(
-        width: double.infinity,
-        height: size.height * 1,
-        child: LayoutBuilder(
-          builder: (_, constrainsts) {
-            return Column(
-              children: [
-                Container(
-                  height: constrainsts.maxHeight * .18,
-                  child: LateralBar(
-                    listOfPhotosAndUsers: accounts,
+      body: LayoutBuilder(
+        builder: (_, constrainsts) {
+          return Column(
+            children: [
+              Container(
+                height: constrainsts.maxHeight * .22,
+                child: LateralBar(
+                  listOfPhotosAndUsers: accounts,
+                ),
+              ),
+              Divider(height: 0),
+              Container(
+                height: constrainsts.maxHeight * .78,
+                width: double.infinity,
+                child: SingleChildScrollView(
+                  child: Column(
+                    //coloar single child scroll view
+                    children: [
+                      ...accounts.map((user) {
+                        return Post(
+                          photo: user['photo'],
+                          user: user['user'],
+                        );
+                      }).toList(),
+                    ],
                   ),
                 ),
-                Divider(height: 0),
-                Container(
-                  height: constrainsts.maxHeight * .82,
-                  width: double.infinity,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: accounts
-                          .map(
-                            (account) => Post(
-                              photo: account['photo'],
-                              user: account['user'],
-                            ),
-                          )
-                          .toList(),
-                    ),
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
+              ),
+            ],
+          );
+        },
       ),
       bottomNavigationBar: BottomBar(),
     );
   }
-}
-
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
 }

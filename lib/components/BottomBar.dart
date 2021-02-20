@@ -13,7 +13,7 @@ class BottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
       child: Container(
-        height: 75 * MediaQuery.of(context).textScaleFactor,
+        height: 75,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: iconsBottomBar.map((icone) {
