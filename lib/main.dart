@@ -79,7 +79,6 @@ class HomePage extends StatelessWidget {
                 width: double.infinity,
                 child: SingleChildScrollView(
                   child: Column(
-                    //coloar single child scroll view
                     children: [
                       ...accounts.map((user) {
                         return Post(
