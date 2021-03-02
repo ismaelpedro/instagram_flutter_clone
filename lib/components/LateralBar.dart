@@ -8,20 +8,15 @@ class LateralBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: listOfPhotosAndUsers
-              .map(
-                (avatar) => Avatar(
-                  photo: avatar['photo'],
-                  user: avatar['user'],
-                ),
-              )
-              .toList(),
-        ),
-      ),
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: listOfPhotosAndUsers.length,
+      itemBuilder: (context, index) {
+        return Avatar(
+          photo: listOfPhotosAndUsers[index]['photo'],
+          user: listOfPhotosAndUsers[index]['user'],
+        );
+      },
     );
   }
 }

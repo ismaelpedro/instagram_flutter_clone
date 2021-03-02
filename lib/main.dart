@@ -12,6 +12,7 @@ class InstagramPage extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
     ]);
 
     return MaterialApp(
@@ -34,12 +35,6 @@ final List accounts = [
   {'photo': 'yes', 'user': 'yes_sr'},
 ];
 
-final List<Icon> iconsAppBar = [
-  Icon(Icons.add_circle_outline_rounded),
-  Icon(Icons.favorite_outline_rounded),
-  Icon(Icons.send_outlined),
-];
-
 final List<Icon> iconsBottomBar = [
   Icon(Icons.home_outlined),
   Icon(Icons.search),
@@ -51,58 +46,71 @@ final List<Icon> iconsBottomBar = [
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    AppBar appBar = AppBar(
+        toolbarHeight: 80,
         backgroundColor: Color.fromRGBO(250, 250, 250, 0),
         elevation: 0,
+        leading: IconButton(
+          color: Colors.black,
+          icon: Icon(Icons.add_circle_outline_outlined),
+          onPressed: () {},
+          iconSize: 28,
+        ),
         title: SvgPicture.asset(
           'assets/images/Instagram_logo.svg',
-          height: 50 * MediaQuery.of(context).textScaleFactor,
+          height: 50,
         ),
-        actions: iconsAppBar
-            .map(
-              (icone) => IconButton(
-                color: Colors.black,
-                icon: icone,
-                onPressed: () {},
-                iconSize: 28,
-              ),
-            )
-            .toList(),
+        actions: [
+          IconButton(
+            color: Colors.black,
+            icon: Icon(Icons.favorite_border),
+            onPressed: () {},
+            iconSize: 28,
+          ),
+          IconButton(
+            color: Colors.black,
+            icon: Icon(Icons.send_outlined),
+            onPressed: () {},
+            iconSize: 28,
+          ),
+        ]);
+
+    double avaliableHeight = MediaQuery.of(context).size.height -
+        MediaQuery.of(context).padding.top -
+        appBar.preferredSize.height -
+        MediaQuery.of(context).padding.bottom;
+
+    return Scaffold(
+      appBar: appBar,
+      body: Column(
+        children: [
+          Container(
+            height: avaliableHeight * .16,
+            child: LateralBar(
+              listOfPhotosAndUsers: accounts,
+            ),
+          ),
+          Divider(height: 0),
+          Container(
+            height: avaliableHeight * .74,
+            width: double.infinity,
+            child: ListView.builder(
+              itemCount: accounts.length,
+              itemBuilder: (context, index) {
+                return Post(
+                  photo: accounts[index]['photo'],
+                  user: accounts[index]['user'],
+                );
+              },
+            ),
+          ),
+        ],
       ),
-      body: LayoutBuilder(
-        builder: (_, constrainsts) {
-          return Column(
-            children: [
-              Container(
-                height: constrainsts.maxHeight * .22,
-                child: LateralBar(
-                  listOfPhotosAndUsers: accounts,
-                ),
-              ),
-              Divider(height: 0),
-              Container(
-                height: constrainsts.maxHeight * .78,
-                width: double.infinity,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      ...accounts.map((user) {
-                        return Post(
-                          photo: user['photo'],
-                          user: user['user'],
-                        );
-                      }).toList(),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          );
-        },
-      ),
-      bottomNavigationBar: BottomBar(
-        iconsBottomBar: iconsBottomBar,
+      bottomNavigationBar: Container(
+        height: avaliableHeight * .10,
+        child: BottomBar(
+          iconsBottomBar: iconsBottomBar,
+        ),
       ),
     );
   }
