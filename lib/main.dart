@@ -10,6 +10,9 @@ void main() => runApp(InstagramPage());
 class InstagramPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays(
+        [SystemUiOverlay.bottom, SystemUiOverlay.top]);
+
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -23,7 +26,7 @@ class InstagramPage extends StatelessWidget {
 }
 
 final List accounts = [
-  {'photo': 'ismael', 'user': 'ismaelpdro'},
+  {'photo': 'ismael', 'user': 'ismaelpdro',},
   {'photo': 'yasmin', 'user': 'yasmind_p'},
   {'photo': 'marcello', 'user': 'marcello_eliias'},
   {'photo': 'madelon', 'user': 'mmadelon_'},
@@ -46,7 +49,7 @@ final List<Icon> iconsBottomBar = [
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    AppBar appBar = AppBar(
+    final appBar = AppBar(
         toolbarHeight: 80,
         backgroundColor: Color.fromRGBO(250, 250, 250, 0),
         elevation: 0,
@@ -75,7 +78,7 @@ class HomePage extends StatelessWidget {
           ),
         ]);
 
-    double avaliableHeight = MediaQuery.of(context).size.height -
+    final avaliableHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).padding.top -
         appBar.preferredSize.height -
         MediaQuery.of(context).padding.bottom;
@@ -85,18 +88,18 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: avaliableHeight * .16,
+            height: avaliableHeight * .17,
             child: LateralBar(
               listOfPhotosAndUsers: accounts,
             ),
           ),
           Divider(height: 0),
           Container(
-            height: avaliableHeight * .74,
+            height: avaliableHeight * .75,
             width: double.infinity,
             child: ListView.builder(
               itemCount: accounts.length,
-              itemBuilder: (context, index) {
+              itemBuilder: (ctx, index) {
                 return Post(
                   photo: accounts[index]['photo'],
                   user: accounts[index]['user'],
@@ -107,7 +110,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        height: avaliableHeight * .10,
+        height: avaliableHeight * .08,
         child: BottomBar(
           iconsBottomBar: iconsBottomBar,
         ),
